@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 1680px;height: 880px;margin: 0;padding: 0;">
+<head>
+    <meta charset="UTF-8">
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Title</title>
+    <style>
+        .bounce {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: white;
+            height: 100%;
+            font: normal bold 6rem "Product Sans", sans-serif;
+            white-space: nowrap;
+        }
+
+        .letter {
+            animation: bounce 0.75s cubic-bezier(0.05, 0, 0.2, 1) infinite alternate;
+            display: inline-block;
+            transform: translate3d(0, 0, 0);
+            margin-top: 0.5em;
+            text-shadow: rgba(255, 255, 255, 0.4) 0 0 0.05em;
+            font: normal 500 1rem 'Varela Round', sans-serif;
+            font-weight: bold;
+        }
+        .letter:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .letter:nth-child(2) {
+            animation-delay: 0.0833333333s;
+        }
+        .letter:nth-child(3) {
+            animation-delay: 0.1666666667s;
+        }
+        .letter:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+        .letter:nth-child(5) {
+            animation-delay: 0.3333333333s;
+        }
+        .letter:nth-child(6) {
+            animation-delay: 0.4166666667s;
+        }
+
+
+        @keyframes bounce {
+            0% {
+                transform: translate3d(0, 0, 0);
+                /*text-shadow: rgba(255, 255, 255, 0.4) 0 0 0.05em;*/
+            }
+            100% {
+                transform: translate3d(0, -1em, 0);
+                /*text-shadow: rgba(255, 255, 255, 0.4) 0 1em 0.35em;*/
+            }
+        }
+
+        #test{
+            /*background:linear-gradient(#a0a1 30%,rgba(0,0,0,0) 30%),url('img/vs.png');*/
+            /*background-size:cover;*/
+            /*background-position:top left;*/
+            background: linear-gradient(
+                    to right,
+                    rgba(35,198,200,0.6) 0%,
+                    rgba(35,198,200,0.5) 10%,
+                    rgba(35,198,200,0.4) 20%,
+                    rgba(35,198,200,0.3) 30%,
+                    rgba(0,0,0,0) 40%,
+                    rgba(0,0,0,0) 50%,
+                    rgba(0,0,0,0) 60%,
+                    rgba(35,198,200,0.3) 70%,
+                    rgba(35,198,200,0.4) 80%,
+                    rgba(35,198,200,0.5) 90%,
+                    rgba(35,198,200,0.6) 100%),url('img/vs.png');
+        }
+    </style>
+</head>
+<body style="width: 1680px;height: 880px;margin: 0;padding: 0;">
+<div style="width: 504px;height: 586px;float: left">
+    <div style="width: 504px;height: 293px;float: left">
+        <h4 style="color: aquamarine;text-align: center">人工智能是一种新的编程范式</h4>
+        <img src="img/pic311.png" style="float: left;height: 160px;margin-top: 20px;margin-left: 15px;">
+    </div>
+    <div style="width: 490px;height: 293px;float: left;margin-left: 10px;">
+        <h4 style="color: aquamarine;text-align: center">传统软件评测 vs. 人工智能评测</h4>
+        <div style="width: 480px;height: 200px;background-position: center;border-radius:8px" id="test">
+        <div style="width: 238px;height: 200px;float: left;text-align: center;color: white;font: normal 500 1rem 'Varela Round', sans-serif;font-weight: bold;">
+            <br/>>结果确定性<&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>>结果可解释性<&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>>测试静态性<&nbsp;&nbsp;&nbsp;&nbsp;<br/><br/>>安全性<&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div style="width: 238px;height: 200px;float: left;text-align: center;color: white;font: normal 500 1rem 'Varela Round', sans-serif;font-weight: bold;">
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;>结果随机性<<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;>黑盒效应<<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;>测试动态性<<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;>对抗与防御特性<
+        </div>
+        </div>
+        </div>
+</div>
+<div style="width: 672px;height: 586px;float: left">
+    <h4 style="color: aquamarine;text-align: center">人工智能中的对抗样本</h4>
+    <img src="img/pic341.png" style="float: left;height: 470px;" id="adv_detail">
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("img#adv_detail").click(function(){
+            $('#frame2', window.parent.document).attr('src','/ai/adversarial/display/display.html');
+        });
+    });
+    </script>
+</div>
+<div style="width: 504px;height: 586px;float: left">
+    <h4 style="color: aquamarine;text-align: center">人工智能应用测评</h4>
+    <img src="img/pic32.png" style="float: left;height: 450px;" id="test_detail">
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("img#test_detail").click(function(){
+            $('#frame2', window.parent.document).attr('src','/ai/testproj/index.html');
+        });
+    });
+    </script>
+</div>
+<div style="width: 924px;height: 294px;float: left">
+    <h4 style="color: aquamarine;text-align: center;margin-top: -10px">人工智能中的可解释性</h4>
+    <img src="img/pic2.png" style="margin-left: 40px;float: left;height: 245px;margin-top: -10px;">
+<!--    <embed src="swf/2.swf" style="margin-right: 40px;float: right;height: 200px;margin-top: 30px;border-radius: 15px">-->
+	<div style="position:relative;margin-right: 40px;float: right;height: 200px;width:300px;margin-top: 30px;">
+        <img id="img_orig" style="position:absolute; z-index:1;height: 200px;border-radius: 15px" src="img/orig.jpg" />
+        <img id="img_inter" style="position:absolute; z-index:2;opacity:0;height: 200px;border-radius: 15px" src="img/inter.jpg" />
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var opi=0.05;
+        function chop(){
+            var curop=parseFloat($("#img_inter").css('opacity'));
+            if (curop >= 1){ opi=-0.05;}
+            else if (curop <= 0) { opi=0.05;}
+            $("#img_inter").css("opacity", curop+opi);
+        };
+        setInterval(chop,100);
+    });
+    </script>
+</div>
+<div style="width: 756px;height: 294px;float: left">
+    <h4 style="color: aquamarine;text-align: center;margin-top: -10px">人工智能应用测试新技术</h4>
+    <img src="img/pic3.png" style="float: left;height: 250px;margin-left: 120px;">
+</div>
+</body>
+</html>

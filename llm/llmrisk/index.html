@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 1680px;height: 880px;margin: 0;padding: 0;">
+<head>
+    <meta charset="UTF-8">
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+    <title>Title</title>
+    <style>
+        .bounce {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: white;
+            height: 100%;
+            font: normal bold 6rem "Product Sans", sans-serif;
+            white-space: nowrap;
+        }
+
+        .letter {
+            animation: bounce 0.75s cubic-bezier(0.05, 0, 0.2, 1) infinite alternate;
+            display: inline-block;
+            transform: translate3d(0, 0, 0);
+            margin-top: 0.5em;
+            text-shadow: rgba(255, 255, 255, 0.4) 0 0 0.05em;
+            font: normal 500 1rem 'Varela Round', sans-serif;
+            font-weight: bold;
+        }
+        .letter:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .letter:nth-child(2) {
+            animation-delay: 0.0833333333s;
+        }
+        .letter:nth-child(3) {
+            animation-delay: 0.1666666667s;
+        }
+        .letter:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+        .letter:nth-child(5) {
+            animation-delay: 0.3333333333s;
+        }
+        .letter:nth-child(6) {
+            animation-delay: 0.4166666667s;
+        }
+
+
+        @keyframes bounce {
+            0% {
+                transform: translate3d(0, 0, 0);
+                /*text-shadow: rgba(255, 255, 255, 0.4) 0 0 0.05em;*/
+            }
+            100% {
+                transform: translate3d(0, -1em, 0);
+                /*text-shadow: rgba(255, 255, 255, 0.4) 0 1em 0.35em;*/
+            }
+        }
+
+        #test{
+            /*background:linear-gradient(#a0a1 30%,rgba(0,0,0,0) 30%),url('img/vs.png');*/
+            /*background-size:cover;*/
+            /*background-position:top left;*/
+            background: linear-gradient(
+                    to right,
+                    rgba(35,198,200,0.6) 0%,
+                    rgba(35,198,200,0.5) 10%,
+                    rgba(35,198,200,0.4) 20%,
+                    rgba(35,198,200,0.3) 30%,
+                    rgba(0,0,0,0) 40%,
+                    rgba(0,0,0,0) 50%,
+                    rgba(0,0,0,0) 60%,
+                    rgba(35,198,200,0.3) 70%,
+                    rgba(35,198,200,0.4) 80%,
+                    rgba(35,198,200,0.5) 90%,
+                    rgba(35,198,200,0.6) 100%),url('img/vs.png');
+        }
+    </style>
+</head>
+<body style="width: 1680px;height: 880px;margin: 0;padding: 0;">
+    <div style="width: 830px;height: 440px;float: left;">
+        <h4 style="color: aquamarine;text-align: center">幻觉问题</h4>
+        <div style="display: flex;justify-content: center;">
+        <img src="img/risk1.png" style="float: left;height: 350px;" >
+        </div>
+    </div>
+    <div style="width: 830px;height: 440px;float: left;">
+        <h4 style="color: aquamarine;text-align: center">提示注入</h4>
+        <div style="display: flex;justify-content: center;">
+        <img src="img/risk2.png" style="float: left;height: 350px;" >
+        </div>
+    </div>
+    <div style="width: 830px;height: 440px;float: left;">
+        <h4 style="color: aquamarine;text-align: center">对抗鲁棒性问题</h4>
+        <div style="display: flex;justify-content: center;">
+        <img src="img/risk3.png" style="float: left;height: 350px;" >
+        </div>
+    </div>
+    <div style="width: 830px;height: 440px;float: left;">
+        <h4 style="color: aquamarine;text-align: center">越狱攻击</h4>
+        <div style="display: flex;justify-content: center;">
+        <img src="img/risk4.png" style="float: left;height: 350px;" >
+        </div>
+    </div>
+</body>
+</html>

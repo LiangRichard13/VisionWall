@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mycss.css">
+  <title></title>
+</head>
+<body>
+    <div style="width: 800px;height: 830px;float:left;">
+	    <div style="width: 800px;height: 700px;">
+		    <h4 style="color: aquamarine;text-align: center">测评标准</h4>
+            <div style="display: flex;justify-content: center;">
+            <img src="standard.png" style="height: 650px;padding-left:10px;"></img>
+            </div>
+		</div>
+	    <div style="text-align:center;padding-left:10px;">
+		    <button style="display:inline-block" id="scene1" onclick="changeScene1()">测评指标</button>
+		    <button style="display:inline-block" id="scene2" onclick="changeScene2()">测评数据</button>
+		    <button style="display:inline-block" id="scene2" onclick="changeScene3()">测评技术</button>
+	    </div>
+	    <script type="text/javascript">
+	        function changeScene1(){
+			    document.getElementById("images").src="measure.png";
+			}
+	        function changeScene2(){
+			    document.getElementById("images").src="database.png";
+			}
+	        function changeScene3(){
+			    document.getElementById("images").src="tech.png";
+			}
+		</script>
+	</div>
+    <div style="width: 1480px;height: 830px;float:left">
+        <img id="images" width="1470" height="800" src="measure.png" ></img>
+    </div>
+</body>
+</html>

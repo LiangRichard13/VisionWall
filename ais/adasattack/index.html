@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mycss.css">
+  <title></title>
+</head>
+<body>
+    <div style="width: 800px;height: 830px;float:left;">
+	    <div style="width: 800px;height: 750px;">
+		    <img src="pso.png" style="width: 800px;height: 750px;padding-left:10px;"></img>
+		</div>
+	    <div style="text-align:center;padding-left:10px;">
+		    <button style="display:inline-block" id="scene1" onclick="changeScene1()">晴天公路场景</button>
+		    <button style="display:inline-block" id="scene2" onclick="changeScene2()">雨天公路场景</button>
+		    <button style="display:inline-block" id="scene2" onclick="changeScene3()">雾天公路场景</button>
+	    </div>
+	    <script type="text/javascript">
+	        function changeScene1(){
+			    document.getElementById("videos").src="sunny_example.mp4";
+			}
+	        function changeScene2(){
+			    document.getElementById("videos").src="rainy_example.mp4";
+			}
+	        function changeScene3(){
+			    document.getElementById("videos").src="foggy_example.mp4";
+			}
+		</script>
+	</div>
+    <div style="width: 1480px;height: 830px;float:left">
+        <video id="videos" muted="muted" width="1480" height="800" src="finalVedio.mp4" autoplay="autoplay" loop></video>
+    </div>
+</body>
+</html>
