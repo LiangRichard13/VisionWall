@@ -8,213 +8,365 @@
         body {
             color: #333333;
             font-family: 'Microsoft YaHei', sans-serif;
-        }
-        
-        .bounce {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            color: white;
-            height: 100%;
-            font: normal bold 6rem "Product Sans", sans-serif;
-            white-space: nowrap;
-        }
-
-        .letter {
-            animation: bounce 0.75s cubic-bezier(0.05, 0, 0.2, 1) infinite alternate;
-            display: inline-block;
-            transform: translate3d(0, 0, 0);
-            margin-top: 0.5em;
-            text-shadow: rgba(255, 255, 255, 0.4) 0 0 0.05em;
-            font: normal 500 1rem 'Varela Round', sans-serif;
-            font-weight: bold;
-        }
-        .letter:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .letter:nth-child(2) {
-            animation-delay: 0.0833333333s;
-        }
-        .letter:nth-child(3) {
-            animation-delay: 0.1666666667s;
-        }
-        .letter:nth-child(4) {
-            animation-delay: 0.25s;
-        }
-        .letter:nth-child(5) {
-            animation-delay: 0.3333333333s;
-        }
-        .letter:nth-child(6) {
-            animation-delay: 0.4166666667s;
-        }
-
-        @keyframes bounce {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(0, -1em, 0);
-            }
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
             height: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            display: flex;
-        }
-        
-        .btn-group {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            width: 180px;
-            padding-right: 20px;
         }
-        
-        .btn {
+
+
+
+        /* 主要内容区域 */
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* 左侧区域 - 架构图和项目成果 */
+        .left-section {
+            width: 70%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .architecture-container {
+            flex: 1;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: block;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .architecture-container h3 {
+            margin: 0;
+            padding: 8px;
+            color: #23c6c8;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 18px;
+            display: none; /* 隐藏标题 */
+        }
+
+        .architecture-img-container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 0;
+            line-height: 0;
+            position: relative;
+
+        }
+
+        .architecture-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            margin: 0;
+            padding: 0;
+            display: block;
+            border: none;
+            transform: scaleX(1.19); /* 横向拉伸图片 */
+            transform-origin: right center; /* 从右侧开始拉伸 */
+        }
+
+        .achievements-container {
+            flex: 0 0 auto;
+            max-height: 250px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .achievements-container h3 {
+            margin: 0;
+            padding: 8px;
+            color: #23c6c8;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 18px;
+        }
+
+        .achievements-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            height: calc(100% - 35px);
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .achievement-item {
+            width: 30%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .achievement-item h4 {
+            margin: 5px 0;
+            color:white;
+            font-size: 14px;
+        }
+
+        .achievement-img {
+            max-width: 100%;
+            height: 120px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .achievement-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 右侧区域 - 诊断对话 */
+        .right-section {
+            width: 30%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .diagnosis-container {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .diagnosis-container h3 {
+            margin: 0;
+            padding: 8px;
+            color: #23c6c8;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 30;
+        }
+
+        .diagnosis-container h3:hover {
+            background-color: #f0f8ff;
+        }
+
+        .diagnosis-container h3::after {
+            content: "点击返回";
+            position: absolute;
+            right: 10px;
+            font-size: 12px;
+            color: #888;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .diagnosis-container h3:hover::after {
+            opacity: 1;
+        }
+
+        .diagnosis-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tongue-upload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+
+        .image-selection {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .image-option img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .image-option.selected img {
+            border-color: #23c6c8;
+            box-shadow: 0 0 8px rgba(35, 198, 200, 0.7);
+        }
+
+        .image-option p {
+            margin-top: 5px;
+            font-size: 14px;
+            color:white;
+        }
+
+        .send-btn {
+            padding: 12px 40px;
             background-color: #23c6c8;
             color: white;
             border: none;
-            padding: 15px 10px;
-            margin: 30px 50px;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 18px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
         }
-        
-        .btn:hover {
+
+        .send-btn:hover {
             background-color: #1ab5b7;
-            transform: translateX(5px);
+            transform: scale(1.05);
         }
-        
-        .btn.active {
-            background-color: #0e8e90;
-            box-shadow: 0 0 10px rgba(35, 198, 200, 0.7);
-        }
-        
-        .content-area {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .content-section {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            gap: 10px;
+
+        .chat-container {
+            padding: 15px;
             height: 100%;
-            width: 100%;
+            overflow-y: auto;
+            display: none;
+            position: relative;
         }
-        
-        .content-section.active {
-            display: flex;
+
+        .message {
+            max-width: 80%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
         }
-        
-        .image-container {
-            flex: 1;
-            text-align: center;
-            margin: 0 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: auto;
+            border-bottom-right-radius: 0;
         }
-        
-        .image-container img {
-            max-width: 100%;
-            height: 600px;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
+
+        .mcm-message {
+            background-color: #e8f5e9;
+            margin-right: auto;
+            border-bottom-left-radius: 0;
         }
-        
-        .image-container img:hover {
-            transform: scale(1.03);
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .results-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            width: 100%;
+
+        .message-header {
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-        
-        .results-item {
-            flex: 1;
-            text-align: center;
-            margin: 0 10px;
+
+        .user-header {
+            color: #1565c0;
         }
-        
-        .results-item img {
-            max-width: 100%;
-            height: 350px;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
+
+        .mcm-header {
+            color: #2e7d32;
         }
-        
-        .results-item img:hover {
-            transform: scale(1.03);
-        }
-        
-        h3 {
-            color: #23c6c8;
-            margin-bottom: 10px;
+
+        .message-content {
+            line-height: 1.5;
         }
     </style>
 </head>
 <body style="width: 1680px;height: 880px;margin: 0;padding: 0;">
     <div class="container">
-        <div class="btn-group">
-            <button class="btn active" onclick="showContent('architecture')">技术架构</button>
-            <button class="btn" onclick="showContent('agent')">多Agent协作</button>
-            <button class="btn" onclick="showContent('frontend')">前端界面</button>
-            <button class="btn" onclick="showContent('results')">项目成果</button>
-        </div>
-        
-        <div class="content-area">
-            <div id="architecture" class="content-section active">
-                <div class="image-container">
-                    <h3>技术架构图</h3>
-                    <img src="img/架构图_7B_中文.jpg" alt="架构图">
-                </div>
-            </div>
-            
-            <div id="agent" class="content-section">
-                <div class="image-container">
-                    <h3>多Agent协作</h3>
-                    <img src="img/多Agent协作.jpg" alt="多Agent协作">
-                </div>
-            </div>
-            
-            <div id="frontend" class="content-section">
-                <div class="image-container">
-                    <h3>前端界面展示</h3>
-                    <img src="img/前端页面.jpg" alt="前端页面">
-                </div>
-            </div>
-            
-            <div id="results" class="content-section">
-                <div class="results-container">
-                    <div class="results-item">
-                        <h3>浦源获奖证书</h3>
-                        <img src="img/浦源获奖证书.jpg" alt="浦源获奖证书">
+        <div class="main-content">
+            <!-- 左侧 - 架构图和项目成果 -->
+            <div class="left-section">
+                <div class="architecture-container">
+                    <h3>技术架构</h3>
+                    <div class="architecture-img-container">
+                        <img src="img/架构图.svg" alt="架构图" class="architecture-img">
                     </div>
-                    <div class="results-item">
-                        <h3>交大智燃挑战赛获奖证书</h3>
-                        <img src="img/交大智燃挑战赛获奖证书.jpg" alt="交大智燃挑战赛获奖证书">
+                </div>
+                
+                <div class="achievements-container">
+                    <h3>项目成果</h3>
+                    <div class="achievements-content">
+                        <div class="achievement-item">
+                            <h4>交大智燃挑战赛获奖证书</h4>
+                            <img src="img/交大智燃挑战赛获奖证书.jpg" alt="交大智燃挑战赛获奖证书" class="achievement-img">
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <h4>浦源获奖证书</h4>
+                            <img src="img/浦源获奖证书.jpg" alt="浦源获奖证书" class="achievement-img">
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <h4>学术成果</h4>
+                            <img src="img/学术成果.png" alt="学术成果" class="achievement-img">
+                        </div>
                     </div>
-                    <div class="results-item">
-                        <h3>学术成果</h3>
-                        <img src="img/学术成果.png" alt="学术成果">
+                </div>
+            </div>
+            
+            <!-- 右侧 - 诊断对话 -->
+            <div class="right-section">
+                <div class="diagnosis-container">
+                    <h3 id="diagnosisTitle">诊断对话</h3>
+                    <div class="diagnosis-content">
+                        <div class="tongue-upload" id="tongueUpload">
+                            <div class="image-selection">
+                                <div class="image-option selected" data-type="tongue">
+                                    <img src="img/舌苔.jpg" alt="舌苔图片" id="tongueThumb">
+                                    <p>舌苔诊断</p>
+                                </div>
+                                <div class="image-option" data-type="lung">
+                                    <img src="img/肺.jpg" alt="肺部图片" id="lungThumb">
+                                    <p>肺部诊断</p>
+                                </div>
+                            </div>
+                            <button class="send-btn" id="sendButton">发送分析</button>
+                        </div>
+                        <div class="chat-container" id="chatMessages">
+                            <!-- 对话内容将通过JavaScript动态添加 -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -222,29 +374,121 @@
     </div>
 
     <script>
-        function showContent(contentId) {
-            // 隐藏所有内容区域
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
+        // 舌苔诊断对话内容
+        const tongueDialogueMessages = [
+            { type: 'User', content: '（用户上传舌苔图片）我的舌苔状况如何？' },
+            { type: 'MCM(M-LLM Agent)', content: '根据图像显示，您的舌苔白厚腻，舌质淡红。厚腻苔通常提示体内湿浊较重——苔厚主湿，苔腻则可能为寒湿或湿热。' },
+            { type: 'User', content: '我有咳嗽和胸闷的症状。' },
+            { type: 'MCM(RAG Agent)', content: "根据对话已结构化主诉：{'疾病':'无','症状':['咳嗽','胸闷','舌苔白厚腻'],'方剂':'无'}。知识图谱查询显示潜在证型（符合症状数/总症状数）：{'脾虚湿困':'3/6','痰湿阻肺':'3/6','肺气不足':'3/6','风寒袭表':'2/6'}。查询路径：['脾虚湿困→临床表现→胸闷/咳嗽/白厚苔','痰湿阻肺→临床表现→胸闷/咳嗽/白厚苔','肺气不足→临床表现→胸闷/咳嗽/白厚苔','风寒袭表→临床表现→咳嗽/白厚苔']。文献依据：《圣济总录·卷五十》载：\"肺气失调可见面肢浮肿，伴咳喘胀满...\"（相关性评分0.4498）"},
+            { type:'MCM(LLM Agent)', content:'结合您咳嗽、胸闷及舌苔白厚的症状，判断可能存在体内能量失衡，或与内湿/寒邪有关。中医认为此类症状多与脾虚湿困、痰湿阻肺、肺气不足或风寒袭表相关。推荐以下经方调理（含炮制与剂量说明）：​补中益气汤​：健脾益气，缓解胸闷气短、咳喘乏力黄芪12g（补气升阳，益卫固表）人参6g（大补元气）白术9g（健脾燥湿）陈皮6g（理气化痰）煎服法：500ml水煎30分钟，每日2次饭后温服​二陈汤​：化痰祛湿，宣肺止咳<br>半夏9g（燥湿化痰）<br>陈皮6g（理气和中）<br>茯苓9g（健脾渗湿）<br>炙甘草3g（调和诸药）<br>煎服法：500ml水煎30分钟，早晚空腹分服<br>​生脉散​：补肺益气，止咳定喘<br>人参6g（补益肺气）<br>麦冬9g（养阴润肺）<br>五味子3g（敛肺止咳）<br>服法：沸水冲泡20分钟，早晚分服<br>​桂枝汤​：疏风散寒，解表宣肺<br>桂枝9g（解肌发表）<br>白芍9g（调和营卫）<br>生姜6g（散寒和胃）<br>大枣3枚（补脾和营）<br>煎服法：500ml水煎30分钟，每日2次<br>建议由执业中医师进行脉诊合参后调整用药。'},
+        ];
+        
+        // 肺部诊断对话内容
+        const lungDialogueMessages = [
+            { type: 'User', content: '（用户上传胸部X光片）我的肺部健康状况良好吗？' },
+            { type: 'MCM(M-LLM Agent)', content: '不，您的肺部受到纤维化的影响。' },
+            { type: 'User', content: '我咳嗽还咳出脓血，可能是什么病？' },
+            { type: 'MCM(RAG Agent)', content: "根据之前的对话，我们已将您的主诉结构化如下：{'疾病': '肺痿', '症状': ['咳脓血', '咳嗽'], '方剂': '无'}。根据知识图谱查询结果，主要可能的疾病如下（符合症状数/总症状数）：{'肺痿': '2/2', '肺痿合并肺痈': '1/4', '阳明病': '1/10'}。知识图谱查询过程如下：['肺痿 - 临床表现 → 咳脓血','肺痿合并肺痈 - 临床表现 → 咳嗽','肺痿 - 临床表现 → 咳嗽','阳明病 - 临床表现 → 咳嗽']。从现有资源中，查询结果如下：{[文档（内容='《圣济总录》卷五十·肺气致面肢浮肿论：肺气失调可致面肢浮肿，症状如咳嗽胀满...', 元数据={'来源':'060-圣济总录.txt','起始索引':761377,'相关性评分':0.462658941})]}"},
+            { type: 'MCM(LLM Agent)', content: '根据您提供的症状和背景信息，您表现出咳嗽伴随脓血痰的症状，且X光显示您的肺部受到纤维化影响。结合这些因素，可以推测您的咳嗽可能与中医所称的"肺痿"（肺萎缩）有关。<br>肺痿是中医的一种病症，表现为肺功能失调，常伴随咳嗽、咳痰，甚至脓血痰等症状。根据结构化信息，咳嗽是肺痿的症状之一。<br>在中医中，有多种方剂可帮助缓解肺痿引起的咳嗽症状，例如：<br><br>​葶苈丸（Ting Li Wan）​​：用于治疗肺气上逆所致的咳嗽、面部浮肿及便秘。<br>葶苈子（甜葶苈子，纸包炒）——2两<br>防己（粉防己）——半两<br>桑白皮（切炒）——3分<br>郁李仁（热水浸泡去皮炒）——2两<br>​泻肺汤（Xie Fei Tang）​​：用于肺气壅盛、胸胁胀满及全身浮肿。<br>葶苈子（甜葶苈子，纸包炒捣成膏）——半两<br>大枣（劈去核）——20枚<br>桑白皮（切）——1两<br>​郁李仁汤（Yu Li Ren Tang）​​：用于肺气上逆引起的面部浮肿、咳嗽发热、腹胀胸闷。<br>郁李仁（热水浸泡去皮炒）——2两<br>赤茯苓（去黑皮）<br>贝母（炒）<br>防己<br>商陆<br>杏仁（热水浸泡去皮麸炒）<br>紫苏茎叶<br>桑白皮（切）<br>建议咨询专业医师进行详细检查与治疗，以获取专业医疗建议。' }
+        ];
+
+        // 当前选择的图片类型
+        let currentImageType = 'tongue';
+        
+        // 图片选择切换
+        document.querySelectorAll('.image-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // 移除所有选中状态
+                document.querySelectorAll('.image-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // 添加选中状态
+                this.classList.add('selected');
+                
+                // 更新当前选择的图片类型
+                currentImageType = this.getAttribute('data-type');
             });
+        });
+
+        // 发送按钮点击事件
+        document.getElementById('sendButton').addEventListener('click', function() {
+            // 隐藏舌苔上传区域
+            document.getElementById('tongueUpload').style.opacity = 0;
             
-            // 显示选中的内容区域
-            document.getElementById(contentId).classList.add('active');
+            // 显示聊天区域
+            setTimeout(function() {
+                document.getElementById('tongueUpload').style.display = 'none';
+                document.getElementById('chatMessages').style.display = 'block';
+                
+                // 根据选择的图片类型显示不同的对话
+                if (currentImageType === 'tongue') {
+                    startDialogueAnimation(tongueDialogueMessages);
+                } else {
+                    startDialogueAnimation(lungDialogueMessages);
+                }
+            }, 500);
+        });
+
+        // 标题点击事件 - 返回选择界面
+        document.getElementById('diagnosisTitle').addEventListener('click', function() {
+            resetToInitialState();
+        });
+
+        // 重置到初始状态
+        function resetToInitialState() {
+            // 隐藏聊天区域
+            document.getElementById('chatMessages').style.display = 'none';
             
-            // 更新按钮样式
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // 显示图片选择区域
+            const tongueUpload = document.getElementById('tongueUpload');
+            tongueUpload.style.display = 'flex';
+            tongueUpload.style.opacity = 1;
+        }
+
+        // 启动对话动画
+        function startDialogueAnimation(dialogueMessages) {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = ''; // 清空现有内容
             
-            // 根据内容ID找到对应的按钮并添加active类
-            const btnIndex = {
-                'architecture': 0,
-                'agent': 1,
-                'frontend': 2,
-                'results': 3
-            };
+            let messageIndex = 0;
             
-            document.querySelectorAll('.btn')[btnIndex[contentId]].classList.add('active');
+            function displayNextMessage() {
+                if (messageIndex < dialogueMessages.length) {
+                    const message = dialogueMessages[messageIndex];
+                    const messageElement = document.createElement('div');
+                    
+                    // 修复气泡样式问题
+                    if (message.type === 'User') {
+                        messageElement.className = 'message user-message';
+                    } else {
+                        messageElement.className = 'message mcm-message';
+                    }
+                    
+                    const headerElement = document.createElement('div');
+                    headerElement.className = message.type === 'User' ? 'message-header user-header' : 'message-header mcm-header';
+                    headerElement.textContent = message.type;
+                    
+                    const contentElement = document.createElement('div');
+                    contentElement.className = 'message-content';
+                    contentElement.innerHTML = message.content;
+                    
+                    messageElement.appendChild(headerElement);
+                    messageElement.appendChild(contentElement);
+                    
+                    chatMessages.appendChild(messageElement);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    messageIndex++;
+                    
+                    // 根据消息长度设置下一条消息的延迟
+                    const delay = Math.min(1500 + message.content.length * 3, 3000);
+                    setTimeout(displayNextMessage, delay);
+                }
+            }
+            
+            // 开始显示消息
+            displayNextMessage();
         }
     </script>
 </body>
