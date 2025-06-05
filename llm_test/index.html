@@ -5,35 +5,383 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="mycss.css">
-  <title></title>
+  <title>大语言模型测评展示</title>
 </head>
 <body>
-    <div style="width: 800px;height: 830px;float:left;">
-	    <div style="width: 800px;height: 700px;">
-		    <h4 style="color: aquamarine;text-align: center">测评标准</h4>
-            <div style="display: flex;justify-content: center;">
-            <img src="standard.png" style="height: 650px;padding-left:10px;"></img>
-            </div>
-		</div>
-	    <div style="text-align:center;padding-left:10px;">
-		    <button style="display:inline-block" id="scene1" onclick="changeScene1()">测评指标</button>
-		    <button style="display:inline-block" id="scene2" onclick="changeScene2()">测评数据</button>
-		    <button style="display:inline-block" id="scene2" onclick="changeScene3()">测评技术</button>
-	    </div>
-	    <script type="text/javascript">
-	        function changeScene1(){
-			    document.getElementById("images").src="measure.png";
-			}
-	        function changeScene2(){
-			    document.getElementById("images").src="database.png";
-			}
-	        function changeScene3(){
-			    document.getElementById("images").src="tech.png";
-			}
-		</script>
-	</div>
-    <div style="width: 1480px;height: 830px;float:left">
-        <img id="images" width="1470" height="800" src="measure.png" ></img>
+  <!-- 左侧栏 -->
+  <div class="left-column">
+    <div class="left-item">
+      <div class="image-container">
+        <h2 class="image-title">相关标准</h2>
+        <img src="Standard.png" alt="Standard" class="full-width-img">
+      </div>
     </div>
+    <div class="left-item">
+      <div class="image-container">
+        <h2 class="image-title">综合测评体系</h2>
+        <img src="Dimensions.png" alt="Dimensions" class="full-width-img">
+      </div>
+    </div>
+    <div class="left-item">
+      <div class="image-container">
+        <h2 class="image-title">测评框架</h2>
+        <img src="Architechture.png" alt="Architechture" class="full-width-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- 中间区域 -->
+  <div class="middle-column">
+    <div class="middle-top">
+      <div class="image-container">
+        <h2 class="image-title">测评数据构造</h2>
+        <img src="Data_Construction.svg" alt="Data Construction" class="full-width-img">
+      </div>
+    </div>
+    <div class="middle-bottom">
+      <div class="process-section">
+        <div class="image-container">
+          <h2 class="image-title">基于国标维度的大模型测评</h2>
+          <img src="Evaluation_Process1.svg" alt="Evaluation Process" class="full-width-img">
+        </div>
+      </div>
+      <div class="results-section">
+        <div class="results-nav">
+          <button class="nav-btn active" onclick="showResult('score')">测评结果</button>
+          <button class="nav-btn" onclick="showResult('reports')">测评报告</button>
+        </div>
+        <div class="results-display">
+          <div class="score-container active" id="score">
+            <div class="score-grid">
+              <div class="score-item">
+                <img src="Evaluation_Results_score.png" alt="Evaluation Results" class="score-img">
+              </div>
+              <div class="score-item">
+                <img src="Evaluation_Results_score_multimodal.svg" alt="Multimodal Results" class="score-img">
+              </div>
+              <div class="score-item">
+                <img src="Evaluation_Results_report3.svg" alt="Report 3" class="score-img">
+              </div>
+            </div>
+          </div>
+          <div class="reports-container" id="reports">
+            <div class="reports-grid">
+              <div class="report-item">
+                <img src="Evaluation_Results_report1.svg" alt="Report 1" class="report-img">
+              </div>
+              <div class="report-item">
+                <img src="Evaluation_Results_report2.svg" alt="Report 2" class="report-img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右侧栏 -->
+  <div class="right-column">
+    <h2 class="column-title">治理大模型</h2>
+    <div class="right-content">
+      <!-- 背景图片区域 -->
+      <div class="background-images">
+        <div class="bg-image-container">
+          <img src="大模型安全漏洞.svg" alt="大模型安全漏洞" class="bg-img">
+          <p class="bg-caption">大模型安全漏洞</p>
+        </div>
+        <div class="bg-image-container">
+          <img src="大模型幻觉.svg" alt="大模型幻觉" class="bg-img">
+          <p class="bg-caption">大模型幻觉</p>
+        </div>
+        <div class="bg-image-container">
+          <img src="大模型越狱.GIF" alt="大模型越狱" class="bg-img">
+          <p class="bg-caption">大模型越狱</p>
+        </div>
+      </div>
+      <!-- 安全性测评按钮 -->
+      <div class="test-button-container">
+        <button class="test-button" onclick="startTest()">安全性测评</button>
+      </div>
+      <!-- 聊天容器 -->
+      <div class="chat-container">
+        <!-- 对话1 -->
+        <div class="dialogue" id="dialogue1" style="display: none;">
+          <div class="message user-message">
+            <img src="用户.svg" class="avatar user-avatar" alt="用户">
+            <div class="message-content"></div>
+          </div>
+          <div class="message assistant-message">
+            <img src="被测模型.svg" class="avatar assistant-avatar" alt="被测模型">
+            <div class="message-content"></div>
+          </div>
+        </div>
+        <!-- 评判按钮 -->
+        <div class="judge-button-container">
+          <button class="judge-button" onclick="startJudgement()">治理大模型评判</button>
+        </div>
+        <!-- 对话2 -->
+        <div class="dialogue" id="dialogue2" style="display: none;">
+          <div class="thinking-bubble">
+            <img src="法官.svg" class="avatar judge-avatar" alt="法官">
+            <div class="thinking-images">
+              <img src="安全标准.jpg" class="thinking-img" alt="安全标准">
+              <img src="治理准则.jpg" class="thinking-img" alt="治理准则">
+            </div>
+            <div class="thinking-content"></div>
+          </div>
+          <div class="message assistant-message" style="display: none;">
+            <img src="法官.svg" class="avatar judge-avatar" alt="法官">
+            <div class="message-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showResult(id) {
+      // 隐藏所有结果
+      document.querySelectorAll('.score-container, .reports-container').forEach(el => {
+        el.classList.remove('active');
+      });
+      // 显示选中的结果
+      document.getElementById(id).classList.add('active');
+      
+      // 更新按钮状态
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    // 加载对话数据
+    async function loadChatData() {
+      const response = await fetch('chat_data.json');
+      const data = await response.json();
+      return data;
+    }
+
+    // 流式输出文字效果
+    async function typeText(element, text, speed = 50) {
+      element.textContent = '';
+      for (let char of text) {
+        element.textContent += char;
+        await new Promise(resolve => setTimeout(resolve, speed));
+      }
+      return new Promise(resolve => setTimeout(resolve, 100)); // 确保文字完全显示
+    }
+
+    // 显示思考图片
+    async function showThinkingImage(img) {
+      img.style.opacity = '0';
+      img.style.display = 'block';
+      await new Promise(resolve => setTimeout(resolve, 100)); // 减少淡入前的等待时间
+      img.style.opacity = '1';
+      await new Promise(resolve => setTimeout(resolve, 4000)); // 增加图片显示时间到4秒
+      img.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 300)); // 减少淡出时间
+      img.style.display = 'none';
+    }
+
+    // 更新JavaScript部分
+    let isJudging = false;
+    let isAnimating = false;
+
+    async function clearDialogue() {
+      document.querySelectorAll('.message-content, .thinking-content').forEach(el => {
+        el.textContent = '';
+      });
+      document.querySelectorAll('.dialogue').forEach(el => {
+        el.style.opacity = '0';
+        el.style.display = 'none';
+      });
+      document.querySelectorAll('.thinking-img').forEach(img => {
+        img.style.display = 'none';
+        img.style.opacity = '0';
+      });
+      document.querySelector('#dialogue2 .thinking-bubble').style.display = 'flex';
+      document.querySelector('#dialogue2 .assistant-message').style.display = 'none';
+    }
+
+    async function showButton(buttonContainer) {
+      buttonContainer.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 50));
+      buttonContainer.style.opacity = '1';
+    }
+
+    async function hideButton(buttonContainer) {
+      buttonContainer.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 300));
+      buttonContainer.style.display = 'none';
+    }
+
+    async function startTest() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const testButton = document.querySelector('.test-button');
+      testButton.disabled = true;
+
+      // 隐藏背景图片和按钮
+      const rightColumn = document.querySelector('.right-column');
+      rightColumn.style.backgroundColor = '#fff';
+      
+      const backgroundImages = document.querySelector('.background-images');
+      backgroundImages.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 500));
+      backgroundImages.style.display = 'none';
+      
+      // 隐藏按钮
+      const buttonContainer = document.querySelector('.test-button-container');
+      buttonContainer.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 300));
+      buttonContainer.style.display = 'none';
+
+      // 显示聊天容器
+      const chatContainer = document.querySelector('.chat-container');
+      chatContainer.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 100));
+      chatContainer.style.opacity = '1';
+
+      // 显示第一段对话
+      await showFirstDialogue();
+
+      isAnimating = false;
+    }
+
+    async function startJudgement() {
+      if (isAnimating || isJudging) return;
+      isJudging = true;
+      isAnimating = true;
+      
+      const button = document.querySelector('.judge-button');
+      button.disabled = true;
+      
+      // 隐藏评判按钮
+      const judgeButtonContainer = document.querySelector('.judge-button-container');
+      judgeButtonContainer.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 300));
+      judgeButtonContainer.style.display = 'none';
+      
+      // 显示并开始第二段对话
+      const dialogue2 = document.getElementById('dialogue2');
+      dialogue2.style.display = 'flex';
+      dialogue2.style.opacity = '1';
+      
+      const data = await loadChatData();
+      const dialogue2Data = data.dialogues[1];
+      const thinkingContent = document.querySelector('#dialogue2 .thinking-content');
+      const assistant2Message = document.querySelector('#dialogue2 .assistant-message .message-content');
+      
+      // 显示思考过程的图片
+      const thinkingImages = document.querySelectorAll('.thinking-img');
+      await showThinkingImage(thinkingImages[0]);
+      await new Promise(resolve => setTimeout(resolve, 300)); // 减少图片之间的间隔
+      await showThinkingImage(thinkingImages[1]);
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // 显示思考过程文字
+      await typeText(thinkingContent, dialogue2Data.messages[0].thinking);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // 清空思考内容并显示最终回答
+      thinkingContent.textContent = '';
+      document.querySelector('#dialogue2 .thinking-bubble').style.display = 'none';
+      document.querySelector('#dialogue2 .assistant-message').style.display = 'flex';
+      await typeText(assistant2Message, dialogue2Data.messages[0].content);
+      
+      // 等待3秒后重置状态
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // 重置所有状态
+      await resetToInitialState();
+      
+      isJudging = false;
+      isAnimating = false;
+    }
+
+    // 重置到初始状态
+    async function resetToInitialState() {
+      // 隐藏聊天容器及其内容
+      const chatContainer = document.querySelector('.chat-container');
+      chatContainer.style.opacity = '0';
+      await new Promise(resolve => setTimeout(resolve, 500));
+      chatContainer.style.display = 'none';
+      
+      // 重置对话框状态
+      document.querySelectorAll('.dialogue').forEach(dialogue => {
+        dialogue.style.display = 'none';
+        dialogue.style.opacity = '0';
+      });
+      
+      document.querySelector('#dialogue2 .thinking-bubble').style.display = 'flex';
+      document.querySelector('#dialogue2 .assistant-message').style.display = 'none';
+      
+      // 清空所有文本内容
+      document.querySelectorAll('.message-content, .thinking-content').forEach(el => {
+        el.textContent = '';
+      });
+      
+      // 重置按钮状态
+      document.querySelector('.judge-button').disabled = false;
+      document.querySelector('.test-button').disabled = false;
+      
+      // 恢复背景色和背景图片
+      const rightColumn = document.querySelector('.right-column');
+      rightColumn.style.backgroundColor = '#e6f3ff';
+      
+      const backgroundImages = document.querySelector('.background-images');
+      backgroundImages.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 100));
+      backgroundImages.style.opacity = '1';
+      
+      // 恢复测评按钮
+      const buttonContainer = document.querySelector('.test-button-container');
+      buttonContainer.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 100));
+      buttonContainer.style.opacity = '1';
+    }
+
+    async function showFirstDialogue() {
+      const dialogue1 = document.getElementById('dialogue1');
+      dialogue1.style.display = 'flex';
+      dialogue1.style.opacity = '1';
+
+      const data = await loadChatData();
+      const dialogue1Data = data.dialogues[0];
+
+      // 显示用户消息框和内容
+      const userMessage = dialogue1.querySelector('.user-message');
+      const userContent = userMessage.querySelector('.message-content');
+      userMessage.style.opacity = '0';
+      userMessage.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 50));
+      userMessage.style.opacity = '1';
+      await typeText(userContent, dialogue1Data.messages[0].content);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // 显示助手消息框和内容
+      const assistantMessage = dialogue1.querySelector('.assistant-message');
+      const assistantContent = assistantMessage.querySelector('.message-content');
+      assistantMessage.style.opacity = '0';
+      assistantMessage.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 50));
+      assistantMessage.style.opacity = '1';
+      await typeText(assistantContent, dialogue1Data.messages[1].content);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // 显示评判按钮
+      const judgeButton = document.querySelector('.judge-button-container');
+      judgeButton.style.display = 'flex';
+      await new Promise(resolve => setTimeout(resolve, 50));
+      judgeButton.style.opacity = '1';
+    }
+
+    // 页面加载完成后显示测评按钮
+    window.addEventListener('load', async function() {
+      await clearDialogue();
+      await showButton(document.querySelector('.test-button-container'));
+    });
+  </script>
 </body>
 </html>
