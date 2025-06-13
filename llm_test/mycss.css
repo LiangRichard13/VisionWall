@@ -1,26 +1,590 @@
-html,body{
-width: 2280px;
-height: 830px;
-margin:0px;
-overflow:hidden;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 1920px; /* 最小宽度设置为1920px */
+  height: 100vh;
+  min-height: 1080px; /* 最小高度设置为1080px */
+  overflow: auto;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  display: flex;
 }
+
 video::-webkit-media-controls {
-
-    display:none !important;
-
+  display: none !important;
 }
-button{
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  color: aliceblue;
-  letter-spacing: 0px;
-  font-size: 25px;
-  width: 230px;
-  height:70px;
+
+/* 图片容器和标题样式 */
+.image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image-title {
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #eee;
+}
+
+/* 左侧列样式 */
+.left-column {
+  width: 20%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 中间区域样式 */
+.middle-column {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.middle-top {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.middle-bottom {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+}
+
+.process-section {
+  flex: 2;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.results-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* 右侧列样式 */
+.right-column {
+  width: 20%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #e6f3ff;
+}
+
+/* 列标题样式 */
+.column-title {
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  color: #333;
+  font-size: 18px;
   text-align: center;
-  text-decoration: none;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+/* 内容容器 */
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 背景图片区域样式 */
+.background-images {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.bg-image-container {
+  flex: 1;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.bg-img.fade {
+  opacity: 0;
+}
+
+.bg-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 10px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
   text-align: center;
-  background:rgba(0, 0, 0, 0);
-  border: 2px solid white;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+/* 图片样式 */
+.full-width-img {
+  width: 100%;
+  height: calc(100% - 40px); /* 减去标题的高度 */
+  object-fit: contain;
+}
+
+/* 结果导航按钮样式 */
+.results-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border: none;
+  background: #e9ecef;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  min-width: 100px;
+}
+
+.nav-btn:hover {
+  background: #dee2e6;
+}
+
+.nav-btn.active {
+  background: #007bff;
+  color: white;
+}
+
+/* 结果显示区域样式 */
+.results-display {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: none;
+}
+
+.result-img.active {
+  opacity: 1;
+  display: block;
+}
+
+/* 评分结果容器样式 */
+.score-container {
+  display: none;
+  height: 100%;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.score-container.active {
+  display: block;
+}
+
+.score-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.score-item {
+  flex: 1;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 报告容器样式 */
+.reports-container {
+  display: none;
+  height: 100%;
+  padding: 10px;
+}
+
+.reports-container.active {
+  display: block;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  height: 100%;
+}
+
+.report-item {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 聊天容器样式 */
+.chat-container {
+  width: 100%;
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  gap: 40px; /* 增加容器内的整体间距 */
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+  height: 100%; /* 占满高度 */
+  box-sizing: border-box;
+}
+
+/* 对话样式 */
+.dialogue {
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  gap: 40px; /* 增加对话内部元素间距 */
+  transition: opacity 0.5s ease;
+  flex: 1; /* 让对话框占用可用空间 */
+}
+
+/* 消息样式 */
+.message {
+  width: 90%;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  display: none;
+  align-items: flex-start;
+  gap: 15px;
+  animation: messageGrow 0.3s ease-out forwards;
+  transform-origin: top;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.message::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #9bbde2;
+  color: white;
+  flex-direction: row-reverse;
+}
+
+.message.assistant-message {
+  align-self: flex-start;
+  background: #a1d0e2;
+  color: white;
+  box-shadow: 0 2px 4px rgba(66, 184, 131, 0.2);
+}
+
+/* 法官的消息样式 */
+#dialogue2 .message.assistant-message {
+  background: #42b883;
+  box-shadow: 0 4px 15px rgba(66, 184, 131, 0.2);
+}
+
+/* 消息内容样式 */
+.message-content {
+  font-size: 15px; /* 增加字体大小 */
+  line-height: 1.6;
+  word-break: break-word;
+  white-space: pre-wrap;
+  min-height: 20px;
+}
+
+/* 头像样式 */
+.avatar {
+  width: 40px; /* 增加头像大小 */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* 评判按钮容器 */
+.judge-button-container {
+  display: none;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0; /* 增加上下间距 */
+  transition: opacity 0.3s ease;
+}
+
+/* 评判按钮样式 */
+.judge-button {
+  padding: 15px 30px; /* 增加按钮大小 */
+  background: linear-gradient(145deg, #4a90e2, #357abd);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px; /* 增加字体大小 */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+  width: 90%; /* 增加按钮宽度 */
+}
+
+.judge-button:hover {
+  background: linear-gradient(145deg, #357abd, #2868a8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.judge-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(74, 144, 226, 0.4);
+}
+
+/* 思考容器样式 */
+.thinking-bubble {
+  align-self: flex-start;
+  width: 95%;
+  padding: 20px;
+  background: #42b883;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(66, 184, 131, 0.2);
+  border-left: 4px solid #2f855a;
+  animation: messageGrow 0.3s ease-out forwards;
+  transform-origin: top;
+  gap: 20px;
+}
+
+/* 思考内容样式 */
+.thinking-content {
+  color: white;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: "Segoe UI", Arial, sans-serif;
+  width: 100%; /* 使用全宽 */
+}
+
+/* 思考图片容器样式 */
+.thinking-images {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* 调整头像在思考气泡中的位置 */
+.thinking-bubble .avatar {
+  position: absolute;
+  left: -20px;
+  top: 20px;
+}
+
+/* 添加一个小标题来标识这是思考过程 */
+.thinking-bubble::before {
+  content: '思考过程';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: #4a90e2;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bubblePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 122, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0);
+  }
+}
+
+/* 消息增长动画 */
+@keyframes messageGrow {
+  from {
+    min-height: 20px;
+    opacity: 0.5;
+  }
+  to {
+    min-height: fit-content;
+    opacity: 1;
+  }
+}
+
+/* 测评按钮容器样式 */
+.test-button-container {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-top: auto; /* 将按钮推到底部 */
+  z-index: 2;
+}
+
+/* 测评按钮样式 */
+.test-button {
+  width: 90%;
+  padding: 15px 24px;
+  background: linear-gradient(145deg, #42b883, #2f855a);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(66, 184, 131, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.test-button:hover {
+  background: linear-gradient(145deg, #2f855a, #246c48);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 184, 131, 0.4);
+}
+
+.test-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(66, 184, 131, 0.4);
 }
